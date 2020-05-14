@@ -1,9 +1,9 @@
 import React from "react";
 
-const Project = ({ name }) => { 
+const Project = ({ project }) => { 
 	
   	return (
-    		<h1>{name}</h1>
+    		<h1>{project.name}</h1>
   	);
 };
 
