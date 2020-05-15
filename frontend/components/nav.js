@@ -6,7 +6,21 @@ import PROJECTS_QUERY from "../apollo/queries/project/projects";
 const Nav = () => {  
   return (
     <div>
-      <Query query={PROJECTS_QUERY} id={null}>
+       <div>
+              <nav className="uk-navbar-container" data-uk-navbar>
+                <div className="uk-navbar-left">
+                  <ul className="uk-navbar-nav">
+                    <li>
+                      <Link href="/">
+                        <a>Layout Preview</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+                
+      {/* <Query query={PROJECTS_QUERY} id={null}>
         {({ data: { projects } }) => {
           return (
             <div>
@@ -43,7 +57,7 @@ const Nav = () => {
             </div>
           );
         }}
-      </Query>
+      </Query> */}
     </div>
   );
 };

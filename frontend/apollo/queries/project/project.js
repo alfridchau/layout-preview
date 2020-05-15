@@ -5,6 +5,10 @@ const PROJECT_QUERY = gql`
     project(id: $id) {
       id
       name
+      version {
+        id
+        version_number
+      }
     }
   }
 `;

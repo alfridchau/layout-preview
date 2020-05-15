@@ -4,7 +4,7 @@ const VERSION_QUERY = gql`
   query Projects($id: ID!) {
     project(id: $id) {
       version {
-          id,
+          id
           version_number
       }
     }
