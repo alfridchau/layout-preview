@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_project_versions",
+  "info": {
+    "name": "version",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "version_number": {
+      "type": "string"
+    }
+  }
+}

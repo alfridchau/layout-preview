@@ -13,7 +13,7 @@ const Home = () => {
     	<div>
       		<div className="uk-section">
         		
-	  	 			<Query query={PROJECT_QUERY} id="1">
+	  	 			<Query query={PROJECT_QUERY} id="5ec26d192c97bd1a51591bf5">
 						{({data: { project }}) => {
 							return (
 								<div className="uk-container uk-container-large">
