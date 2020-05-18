@@ -2,13 +2,18 @@ module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
     default: {
-      connector: 'bookshelf',
+      connector: 'mongoose',
       settings: {
-        client: 'sqlite',
-        filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+        host: env('DATABASE_HOST', 'layout-preview-it0gc.azure.mongodb.net'),
+        srv: env.bool('DATABASE_SRV', true),
+        port: env.int('DATABASE_PORT', 27017),
+        database: env('DATABASE_NAME', 'layout-preview'),
+        username: env('DATABASE_USERNAME', 'alfridchau'),
+        password: env('DATABASE_PASSWORD', '26Nov1982@'),
       },
       options: {
-        useNullAsDefault: true,
+        authenticationDatabase: env('AUTHENTICATION_DATABASE', null),
+        ssl: env.bool('DATABASE_SSL', true),
       },
     },
   },
