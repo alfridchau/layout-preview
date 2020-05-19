@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import { useMutation } from '@apollo/react-hooks';
 import gql from "graphql-tag";
+import { useRouter } from 'next/router'
+
 
 const LOGIN_MUTATION = gql`
   mutation Login($input: UsersPermissionsLoginInput!) {
@@ -23,6 +25,7 @@ const LOGIN_MUTATION = gql`
 `
 
 const Home = () => {
+	const router = useRouter();
 	const [loginAccount] = useMutation(LOGIN_MUTATION);
 	const [form, setForm] = useState({
 		name: "",
@@ -47,7 +50,10 @@ const Home = () => {
 						"password": form.password,
 						"provider": "local"
 					}
-				}});
+				}}).then(() => {
+					// TODO: check the corresonding project and route to the belonging project
+					router.push("/project");
+				});
 			  }}>
 				<label>
 						Name:
