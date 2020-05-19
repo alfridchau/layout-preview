@@ -24,8 +24,18 @@ const LOGIN_MUTATION = gql`
 
 const Home = () => {
 	const [loginAccount] = useMutation(LOGIN_MUTATION);
-	const [name, setName] = useState();
+	const [form, setForm] = useState({
+		name: "",
+		password: ""
+	});
 	
+	const handleChange = (e) => {
+		const value = e.target.value;
+		setForm({
+			...form,
+			[e.target.name]: value
+		});
+	}
 
   	return (
     	<div>
@@ -33,15 +43,19 @@ const Home = () => {
 				e.preventDefault();
 				loginAccount({ variables: {
 					"input": {
-						"identifier": "test@test.com",
-						"password": "password",
+						"identifier": form.name,
+						"password": form.password,
 						"provider": "local"
 					}
 				}});
 			  }}>
 				<label>
 						Name:
-						<input type="text" name="name" value={name} onChange={() => setName(name)} />
+						<input type="text" name="name" value={form.name} onChange={handleChange} />
+				</label>
+				<label>
+						Password:
+						<input type="password" name="password" value={form.password} onChange={handleChange} />
 				</label>
 				<input type="submit" value="Submit" />
 			</form>
