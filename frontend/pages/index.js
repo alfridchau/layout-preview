@@ -1,31 +1,50 @@
-import React, { useState, useEffect} from "react";
-import Query from "../components/query"; 
+import React, { useState} from "react";
+import { useMutation } from '@apollo/react-hooks';
+import gql from "graphql-tag";
 
-import PROJECT_QUERY from "../apollo/queries/project/project";
-
-import Project_Title from "../components/project_title";
-import Versions_Select from "../components/versions_select";
+const LOGIN_MUTATION = gql`
+  mutation Login($input: UsersPermissionsLoginInput!) {
+	login(input: $input) {
+		jwt
+		user {
+			id
+			email
+			confirmed
+			blocked
+			role {
+				id
+				name
+				description
+				type
+			}
+		}
+  	}
+}
+`
 
 const Home = () => {
+	const [loginAccount] = useMutation(LOGIN_MUTATION);
+	const [name, setName] = useState();
 	
 
   	return (
     	<div>
-      		<div className="uk-section">
-        		
-	  	 			<Query query={PROJECT_QUERY} id="1">
-						{({data: { project }}) => {
-							return (
-								<div className="uk-container uk-container-large">
-									<Project_Title name={project.name} />
-									<label>Layout Versions:</label>
-									<Versions_Select versions={project.version} projectID={project.id} />
-								</div>
-								
-							)
-            			}}
-          			</Query>
-      		</div>
+      		<form id="login" onSubmit={e => {
+				e.preventDefault();
+				loginAccount({ variables: {
+					"input": {
+						"identifier": "test@test.com",
+						"password": "password",
+						"provider": "local"
+					}
+				}});
+			  }}>
+				<label>
+						Name:
+						<input type="text" name="name" value={name} onChange={() => setName(name)} />
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
     	</div>
   	);
 };
