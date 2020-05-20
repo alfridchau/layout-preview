@@ -1,65 +1,69 @@
-import React, { Component } from 'react'
-import { AUTH_TOKEN } from '../constants'
+import React, { useState, useContext} from "react";
+import { useApolloClient, useMutation } from '@apollo/react-hooks';
+import { useRouter } from 'next/router'
+import LOGIN_QUERY from "../apollo/queries/user/login";
+import { UserContext } from '../contexts/userContext';
 
-class Login extends Component {
-  state = {
-    login: true, // switch between Login and SignUp
-    email: '',
-    password: '',
-    name: '',
-  }
+const Login = () => {
+	
+	
+	const router = useRouter();
+	const client = useApolloClient();
+	const { user, storeUser } = useContext(UserContext);
 
-  render() {
-    const { login, email, password, name } = this.state
-    return (
-      <div>
-        <h4 className="mv3">{login ? 'Login' : 'Sign Up'}</h4>
-        <div className="flex flex-column">
-          {!login && (
-            <input
-              value={name}
-              onChange={e => this.setState({ name: e.target.value })}
-              type="text"
-              placeholder="Your name"
-            />
-          )}
-          <input
-            value={email}
-            onChange={e => this.setState({ email: e.target.value })}
-            type="text"
-            placeholder="Your email address"
-          />
-          <input
-            value={password}
-            onChange={e => this.setState({ password: e.target.value })}
-            type="password"
-            placeholder="Choose a safe password"
-          />
-        </div>
-        <div className="flex mt3">
-          <div className="pointer mr2 button" onClick={() => this._confirm()}>
-            {login ? 'login' : 'create account'}
-          </div>
-          <div
-            className="pointer button"
-            onClick={() => this.setState({ login: !login })}
-          >
-            {login
-              ? 'need to create an account?'
-              : 'already have an account?'}
-          </div>
-        </div>
-      </div>
-    )
-  }
+	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
+		onCompleted({ login }) {
+			localStorage.setItem("auth:token", login.jwt);
+			storeUser(login.user)
+			client.writeData({ data: { isLoggedIn: true } });
+			router.push("/project");
+		},
+		onError(e) {
+			console.log(e)
+		}
+	  });
+	
+	const [form, setForm] = useState({
+		name: "test@test.com",
+		password: "password"
+	});
+	
+	const handleChange = (e) => {
+		const value = e.target.value;
+		setForm({
+			...form,
+			[e.target.name]: value
+		});
+	}
 
-  _confirm = async () => {
-    // ... you'll implement this 🔜
-  }
+	
+	if (loading) return <p>Loading</p>;
+  	if (error) return <p>An error occurred</p>;
+  	return (
+		  
+    	<div>
+      		<form id="login" onSubmit={e => {
+				e.preventDefault();
+				loginAccount({ variables: {
+					"input": {
+						"identifier": form.name,
+						"password": form.password,
+						"provider": "local"
+					}
+				}});
+			  }}>
+				<label>
+						Email:
+						<input type="text" name="name" value={form.name} onChange={handleChange} />
+				</label>
+				<label>
+						Password:
+						<input type="password" name="password" value={form.password} onChange={handleChange} />
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
+    	</div>
+  	);
+};
 
-  _saveUserData = token => {
-    localStorage.setItem(AUTH_TOKEN, token)
-  }
-}
-
-export default Login
+export default Login;

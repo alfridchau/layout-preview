@@ -12,6 +12,7 @@
     "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.9",
+    "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "dotenv": "^8.2.0",
     "graphql": "^15.0.0",
@@ -21,6 +22,6 @@
     "next-fonts": "^1.1.0",
     "next-with-apollo": "^5.0.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "^16.13.1"
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import Query from "../components/query"; 
 
 import PROJECT_QUERY from "../apollo/queries/project/project";
@@ -6,8 +6,11 @@ import PROJECT_QUERY from "../apollo/queries/project/project";
 import Project_Title from "../components/project_title";
 import Versions_Select from "../components/versions_select";
 
-const Home = () => {
-	
+import { UserContext } from '../contexts/userContext';
+
+const Project = () => {
+	const { user, storeUser } = useContext(UserContext);
+	console.log(user)
 
   	return (
     	<div>
@@ -30,4 +33,4 @@ const Home = () => {
   	);
 };
 
-export default Home;
+export default Project;
