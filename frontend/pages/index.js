@@ -1,27 +1,29 @@
 import React, {useEffect, useContext} from "react";
-import Login from "../components/Login";
-
+import LoginForm from "../components/LoginForm";
+import { useRouter } from 'next/router'
 import { UserContext } from '../contexts/userContext';
-import Router from 'next/router'
 
-const Home = () => {
-	const { user, storeUser } = useContext(UserContext);
+const Index = () => {
+	
+	const router = useRouter();
+	let loginComponent;
 
+	let token = null;
+	useEffect(() => {
+		if (localStorage.getItem("auth:token")) {
+			token = localStorage.getItem("auth:token");
+			loginComponent = "";
+			router.push("/project");
+		} else {
+			loginComponent = <LoginForm />;
+		}
+	});
 	
-	
-	let loginComponent = "";
-	if (Object.keys(user).length === 0 && user.constructor === Object) {
-		loginComponent = <Login />;
-	} else {
-		useEffect(() => {
-			Router.push("/project")
-		}, [])
-	}
   	return (
 		<div>
-			{loginComponent}
+			{token? "": loginComponent}
 		</div>
   	);
 };
 
-export default Home;
+export default Index;

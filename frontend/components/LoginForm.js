@@ -1,21 +1,29 @@
-import React, { useState, useContext} from "react";
-import { useApolloClient, useMutation } from '@apollo/react-hooks';
+import React, { useState, useContext, useEffect} from "react";
+import { useMutation } from '@apollo/react-hooks';
 import { useRouter } from 'next/router'
 import LOGIN_QUERY from "../apollo/queries/user/login";
 import { UserContext } from '../contexts/userContext';
 
-const Login = () => {
+const LoginForm = () => {
 	
-	
+	console.log("")
 	const router = useRouter();
-	const client = useApolloClient();
+	//const client = useApolloClient();
 	const { user, storeUser } = useContext(UserContext);
+
+	// useEffect(() => {
+	// 	if (Object.keys(user).length > 0 && user.constructor === Object) {
+	// 		projectForm = "";
+	// 		router.push("/project");
+	// 	}
+	// })
 
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
-			storeUser(login.user)
-			client.writeData({ data: { isLoggedIn: true } });
+			storeUser(login.user);
+			
+			//client.writeData({ data: { isLoggedIn: true } });
 			router.push("/project");
 		},
 		onError(e) {
@@ -44,6 +52,7 @@ const Login = () => {
     	<div>
       		<form id="login" onSubmit={e => {
 				e.preventDefault();
+				
 				loginAccount({ variables: {
 					"input": {
 						"identifier": form.name,
@@ -66,4 +75,4 @@ const Login = () => {
   	);
 };
 
-export default Login;
+export default LoginForm;
