@@ -11,7 +11,6 @@ import { UserContext } from '../contexts/userContext';
 const Project = () => {
 	const { user, storeUser } = useContext(UserContext);
 	const router = useRouter();
-	
 	let projectForm = (
 		<div className="uk-section">		
 			<Query query={PROJECT_QUERY} id="5ec26d192c97bd1a51591bf5">

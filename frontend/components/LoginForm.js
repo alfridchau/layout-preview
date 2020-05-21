@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect} from "react";
 import { useMutation } from '@apollo/react-hooks';
-import { useRouter } from 'next/router'
+import Router from 'next/router';
 import LOGIN_QUERY from "../apollo/queries/user/login";
 import { UserContext } from '../contexts/userContext';
 
 const LoginForm = () => {
+
 	
-	console.log("")
-	const router = useRouter();
 	//const client = useApolloClient();
 	const { user, storeUser } = useContext(UserContext);
+
 
 	// useEffect(() => {
 	// 	if (Object.keys(user).length > 0 && user.constructor === Object) {
@@ -24,7 +24,7 @@ const LoginForm = () => {
 			storeUser(login.user);
 			
 			//client.writeData({ data: { isLoggedIn: true } });
-			router.push("/project");
+			Router.push("/project");
 		},
 		onError(e) {
 			console.log(e)
@@ -44,13 +44,19 @@ const LoginForm = () => {
 		});
 	}
 
+	useEffect(() => {
+		// Prefetch the dashboard page as the user will go there after the login
+		Router.prefetch('/dashboard')
+	  }, [])
+
 	
 	if (loading) return <p>Loading</p>;
-  	if (error) return <p>An error occurred</p>;
+	if (error) return <p>An error occurred</p>;
+	
   	return (
-		  
+		
     	<div>
-      		<form id="login" onSubmit={e => {
+			<form id="login" onSubmit={e => {
 				e.preventDefault();
 				
 				loginAccount({ variables: {
@@ -60,7 +66,7 @@ const LoginForm = () => {
 						"provider": "local"
 					}
 				}});
-			  }}>
+				}}>
 				<label>
 						Email:
 						<input type="text" name="name" value={form.name} onChange={handleChange} />
@@ -71,6 +77,7 @@ const LoginForm = () => {
 				</label>
 				<input type="submit" value="Submit" />
 			</form>
+      		
     	</div>
   	);
 };

@@ -4,24 +4,21 @@ import "../assets/css/style.css";
 import { ApolloProvider } from "@apollo/react-hooks";  
 import withData from "../utils/apollo";
 import Nav from "../components/nav";  
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 import UserContextProvider from '../contexts/userContext';
 
 
 
-const App = ({ Component, pageProps, apollo }) => {  
+const App = ({ Component, pageProps, apollo }) => {
 
-	// const router = useRouter();
-	
-  	// useEffect(() => {
-	// 	const token = localStorage.getItem('auth:token');
-	// 	if (token) {
-	// 		router.push("/project");
-	// 	} else {
-	// 		router.push("/");
-	// 	}
-	// },[]);
+	useEffect(() => {
+		if (localStorage.getItem("auth:token")) {
+			//Router.push("/project")
+			
+		}
+	},[]);
+
   	return (
     	<ApolloProvider client={apollo}>
       		<Head>
