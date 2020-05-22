@@ -9,9 +9,6 @@
     "version_number": {
       "type": "string"
     },
-    "prototype_url": {
-      "type": "string"
-    },
     "desktop_layout": {
       "type": "component",
       "repeatable": false,

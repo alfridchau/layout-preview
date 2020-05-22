@@ -8,20 +8,22 @@ const PROJECTS_QUERY = gql`
 			version {
 				id
 				version_number
-				prototype_url
 				desktop_layout {
+					prototype_url
 					layout {
-					name
+						name
 					}
 				}
 				tablet_layout {
+					prototype_url
 					layout {
-					name
+						name
 					}
 				}
 				mobile_layout {
+					prototype_url
 					layout {
-					name
+						name
 					}
 				}
 			}
