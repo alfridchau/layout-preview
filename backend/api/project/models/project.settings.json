@@ -12,14 +12,15 @@
     "name": {
       "type": "string"
     },
-    "version": {
-      "type": "component",
-      "repeatable": true,
-      "component": "project.version"
-    },
     "user": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "versions": {
+      "type": "dynamiczone",
+      "components": [
+        "project.version"
+      ]
     }
   }
 }
