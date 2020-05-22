@@ -4,10 +4,11 @@ import Router from 'next/router';
 import LOGIN_QUERY from "../apollo/queries/user/login";
 
 const LoginForm = () => {
+
 	
 	
-
-
+	
+	
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
@@ -36,8 +37,8 @@ const LoginForm = () => {
 	if (loading) return <p>Loading</p>;
 	if (error) return <p>An error occurred</p>;
 
-  	return (
-    	<div>
+	return (
+		<div>
 			<form id="login" onSubmit={e => {
 				e.preventDefault();
 				

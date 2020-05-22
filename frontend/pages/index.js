@@ -3,30 +3,24 @@ import LoginForm from "../components/LoginForm";
 import Router from 'next/router';
 const Index = () => {
 	
-	const [isAuth, setAuth] = useState(false);
-	let component = "";
-
+	const [isLoading, setLoading] = useState(true);
+	
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
-			setAuth(true);
+			Router.push("/project")
 		} else {
-			setAuth(false);
+			setLoading(false)
 		}
-	},[]);
-
-	console.log(isAuth)
-	if (isAuth == false) {
-		component = <LoginForm />
-	} else {
-		
-		component = "";
-		Router.push("/project")
-	}
-  	return (
+	},[isLoading]);
+	
+  	return isLoading == true? (
 		  <div>
-			  {component}
+			  <p>Loading</p>
 		  </div>
-		
+	): (
+		  <div>
+			  <LoginForm />
+		  </div>
 	);
 };
 
