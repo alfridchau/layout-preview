@@ -24,7 +24,7 @@ const Project = () => {
 	  ): (
     	<div>
       		<div className="uk-section">		
-				<Query query={PROJECT_QUERY} id="5ec26d192c97bd1a51591bf5">
+				<Query query={PROJECT_QUERY} id="5ec7e4d1b39e715d4d541bf9">
 					{({data: { project }}) => {
 						return (
 							<div className="uk-container uk-container-large">

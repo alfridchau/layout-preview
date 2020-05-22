@@ -12,16 +12,20 @@
     "prototype_url": {
       "type": "string"
     },
-    "layouts": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
+    "desktop_layout": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project.layout"
+    },
+    "tablet_layout": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project.tablet-layout"
+    },
+    "mobile_layout": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project.mobile-layout"
     }
   }
 }

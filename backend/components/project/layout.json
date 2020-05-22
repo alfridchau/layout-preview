@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_layouts",
+  "info": {
+    "name": "Desktop Layout",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "layout": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

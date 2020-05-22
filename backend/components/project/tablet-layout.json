@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_tablet_layouts",
+  "info": {
+    "name": "Tablet Layout",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "layout": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_project_mobile_layouts",
+  "info": {
+    "name": "Mobile Layout",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "layout": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
