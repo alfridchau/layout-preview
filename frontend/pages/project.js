@@ -30,7 +30,7 @@ const Project = () => {
 							<div className="uk-container uk-container-large">
 							<Project_Title name={project.name} />
 							<label>Layout Versions:</label>
-							<Versions_Select versions={project.version} projectID={project.id} />
+							<Versions_Select versions={project.version} project_uid={project.uid} />
 						</div>				
 					)}}
 				</Query>

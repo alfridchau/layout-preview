@@ -4,6 +4,7 @@ const PROJECTS_QUERY = gql`
 	query Projects {
 		projects {
 			id
+			uid
 			name
 			version {
 				id

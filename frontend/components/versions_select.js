@@ -2,13 +2,13 @@ import React, { useState, useEffect} from "react";
 import { useRouter } from 'next/router';
 
 
-const Versions_Select = ({ projectID, versions }) => {
+const Versions_Select = ({ project_uid, versions }) => {
 	const router = useRouter();
 	const setPath = (e) => {
 		let index = e.target.selectedIndex;
 		let el = e.target.childNodes[index];
 		let version =  el.getAttribute('id');
-		router.push("/project/"+projectID+"/"+version);
+		router.push("/project/"+project_uid+"/version/"+version);
 	}
 
 	// States
@@ -41,7 +41,7 @@ const Versions_Select = ({ projectID, versions }) => {
   	return (
 		<select disabled={loading} value={value} onChange={setPath}>
 			{options.map(({ id, value }) => (
-				<option id={id} key={id} value={value}>{value}</option>
+				<option id={value} key={id} value={value}>{value}</option>
 			))}
 		</select>
 	);

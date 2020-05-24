@@ -6,11 +6,12 @@ const Index = () => {
 	const [isLoading, setLoading] = useState(true);
 	
 	useEffect(() => {
-		if (localStorage.getItem("auth:token")) {
-			Router.push("/project")
-		} else {
-			setLoading(false)
-		}
+		// if (localStorage.getItem("auth:token")) {
+		// 	Router.push("/project/[uid]", "/project/abc")
+		// } else {
+		// 	setLoading(false)
+		// }
+		setLoading(false)
 	},[isLoading]);
 	
   	return isLoading == true? (

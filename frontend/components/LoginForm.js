@@ -1,17 +1,39 @@
 import React, { useState, useEffect} from "react";
-import { useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 import LOGIN_QUERY from "../apollo/queries/user/login";
+import USER_PROJECTS_QUERY from "../apollo/queries/user/projects";
 
 const LoginForm = () => {
 
+	const [isLoading, setLoading] = useState(true);
+	const [projectUID, setProjectUID] = useState();
+
+	useEffect(() => {
+		if (localStorage.getItem("auth:token")) {
+			
+			Router.push("/project")
+		} else {
+			setLoading(false)
+		}
+		getProjectsFromUserEmail();
+	},[isLoading]);
 	
+
+	const getProjectsFromUserEmail = () => {
+		const { data, loading, error } = useQuery(USER_PROJECTS_QUERY, {
+			variables: { email: localStorage.getItem("email") },
+		});
+		if (loading) return <p>Loading ...</p>;
+		console.log(data)
+  		return data;
+	}
 	
-	
-	
+
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
+			localStorage.setItem("email", login.user.email);
 			//client.writeData({ data: { isLoggedIn: true } });
 			Router.push("/project");
 		},
@@ -37,7 +59,11 @@ const LoginForm = () => {
 	if (loading) return <p>Loading</p>;
 	if (error) return <p>An error occurred</p>;
 
-	return (
+	return isLoading == true? (
+		<div>
+			<p>Loading</p>
+		</div>
+	): (
 		<div>
 			<form id="login" onSubmit={e => {
 				e.preventDefault();

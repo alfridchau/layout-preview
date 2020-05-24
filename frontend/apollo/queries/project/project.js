@@ -3,7 +3,8 @@ import gql from "graphql-tag";
 const PROJECT_QUERY = gql`  
   	query Projects($id: ID!) {
     	project(id: $id) {
-      		id
+			id
+			uid
       		name
       		version {
         		id
