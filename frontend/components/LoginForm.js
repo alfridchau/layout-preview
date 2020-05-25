@@ -12,7 +12,12 @@ const LoginForm = () => {
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
 			
-			Router.push("/project")
+			Router.push({
+				pathname: "/project",
+				query: {
+					email: "test@test.com"
+				}
+			});
 		} else {
 			setLoading(false)
 		}
@@ -27,7 +32,9 @@ const LoginForm = () => {
 			localStorage.setItem("auth:token", login.jwt);
 			localStorage.setItem("email", login.user.email);
 			//client.writeData({ data: { isLoggedIn: true } });
-			Router.push("/project");
+			Router.push("/project", "/project", {
+				email: "test@test.com"
+			});
 		},
 		onError(e) {
 			console.log(e)

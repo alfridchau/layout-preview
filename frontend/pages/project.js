@@ -60,7 +60,7 @@ const Project = ({email}) => {
 };
 
 export async function getServerSideProps(context) {
-
+	console.log(context.query)
 	let email = "test@test.com"
 	return {
 	  props: {
