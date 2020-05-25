@@ -1,23 +1,17 @@
-import React, {useState, useEffect,} from "react";  
+//Libraries
+import React from "react";  
 import Head from "next/head";  
-import "../assets/css/style.css";
+//import "../assets/css/style.css";
 import { ApolloProvider } from "@apollo/react-hooks";  
 import withData from "../utils/apollo";
-import Nav from "../components/nav";  
-import Router from 'next/router';
 
+//Context
 import UserContextProvider from '../contexts/userContext';
 
-
+//Components
+import Nav from "../components/nav";  
 
 const App = ({ Component, pageProps, apollo }) => {
-
-	useEffect(() => {
-		if (localStorage.getItem("auth:token")) {
-			//Router.push("/project")
-			
-		}
-	},[]);
 
   	return (
     	<ApolloProvider client={apollo}>

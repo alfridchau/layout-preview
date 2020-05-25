@@ -1,16 +1,14 @@
+//Core
 import React, {useEffect, useState} from "react";
+
+//Components
 import LoginForm from "../components/LoginForm";
-import Router from 'next/router';
+
 const Index = () => {
 	
 	const [isLoading, setLoading] = useState(true);
 	
 	useEffect(() => {
-		// if (localStorage.getItem("auth:token")) {
-		// 	Router.push("/project/[uid]", "/project/abc")
-		// } else {
-		// 	setLoading(false)
-		// }
 		setLoading(false)
 	},[isLoading]);
 	

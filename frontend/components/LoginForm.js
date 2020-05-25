@@ -1,23 +1,19 @@
+//Libraries
 import React, { useState, useEffect} from "react";
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
+
+//Queries
 import LOGIN_QUERY from "../apollo/queries/user/login";
-import USER_PROJECTS_QUERY from "../apollo/queries/user/projects";
 
 const LoginForm = () => {
 
 	const [isLoading, setLoading] = useState(true);
-	const [projectUID, setProjectUID] = useState();
 
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
 			
-			Router.push({
-				pathname: "/project",
-				query: {
-					email: "test@test.com"
-				}
-			});
+			Router.push("/project-list");
 		} else {
 			setLoading(false)
 		}
@@ -30,11 +26,8 @@ const LoginForm = () => {
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
-			localStorage.setItem("email", login.user.email);
 			//client.writeData({ data: { isLoggedIn: true } });
-			Router.push("/project", "/project", {
-				email: "test@test.com"
-			});
+			Router.push("/project-list");
 		},
 		onError(e) {
 			console.log(e)
