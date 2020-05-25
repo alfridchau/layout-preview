@@ -16,18 +16,10 @@ const LoginForm = () => {
 		} else {
 			setLoading(false)
 		}
-		getProjectsFromUserEmail();
+		
 	},[isLoading]);
 	
 
-	const getProjectsFromUserEmail = () => {
-		const { data, loading, error } = useQuery(USER_PROJECTS_QUERY, {
-			variables: { email: localStorage.getItem("email") },
-		});
-		if (loading) return <p>Loading ...</p>;
-		console.log(data)
-  		return data;
-	}
 	
 
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {

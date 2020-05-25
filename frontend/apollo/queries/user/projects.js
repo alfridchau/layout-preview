@@ -1,7 +1,10 @@
 import gql from "graphql-tag";
 
-const USER_PROJECTS_QUERY = gql`  
-    query Projects($email: String!) {
+const MY_PROJECTS_QUERY = gql`  
+    query MyProjects($email: String!) {
+        # myProjects(email: $email) {
+        #     name
+        # }
         projects(where: {
             user:{
                 email: $email
@@ -15,4 +18,4 @@ const USER_PROJECTS_QUERY = gql`
     }
 `;
 
-export default USER_PROJECTS_QUERY; 
+export default MY_PROJECTS_QUERY; 
