@@ -35,16 +35,16 @@ const Versions_Select = ({ project_uid }) => {
 					{
 						versions.map((version) => (
 							<React.Fragment>
-							<tr key={version.id}>
-								<td colSpan="3">
-									{version.version_number}
-								</td>
-							</tr>
-							<tr>
-								<td>Desktop</td>
-								<td>Tablet</td>
-								<td>Mobile</td>
-							</tr>
+								<tr key={version.id}>
+									<td colSpan="3">
+										<h2>Version: {version.version_number}</h2>
+									</td>
+								</tr>
+								<tr>
+									<td>Desktop</td>
+									<td>Tablet</td>
+									<td>Mobile</td>
+								</tr>
 							</React.Fragment>
 						))
 					}

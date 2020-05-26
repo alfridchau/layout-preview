@@ -13,7 +13,8 @@ const Nav = () => {
 		}
 	});
 
-	const logout = () => {
+	const logout = (e) => {
+		e.preventDefault();
 		localStorage.clear();
 		setIsAuth(false)
 		router.push("/");
@@ -24,15 +25,23 @@ const Nav = () => {
        		<div>
               	<nav className="uk-navbar-container">
                 	<div className="uk-navbar-left">
+					<style jsx>{`
+						.uk-navbar-nav {
+							width: 100%;
+							justify-content: space-between;
+						}
+					`}</style>
                   		<ul className="uk-navbar-nav">
                     		<li>
                       			<Link href="/">
                         			<a>Layout Preview</a>
                       			</Link>
-								{isAuth == true? (
-									<div onClick={logout}>Logut</div>
-								): null}
                     		</li>
+							{isAuth == true? (
+								<li>
+									<a onClick={logout}>Logut</a>
+								</li>
+							): null}
                   		</ul>
                 	</div>
               	</nav>

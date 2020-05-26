@@ -34,6 +34,9 @@ const Project = ({uid}) => {
 	  return <div>Error!</div>;
 	}
 	let project = data.myProject;
+	if (project == null) {
+		return <h1>There is no such project</h1>;
+	}
  
 
   	return isLoading == true? (
@@ -45,16 +48,6 @@ const Project = ({uid}) => {
       		<div className="uk-section">
 				<Project_Title name={project.name} />
 				<Versions_Select project_uid={uid} />
-				{/* <Query query={MY_PROJECTS_QUERY} email={email}>
-					{({data: { project }}) => {
-						return (
-							<div className="uk-container uk-container-large">
-							<Project_Title name={project.name} />
-							<label>Layout Versions:</label>
-							<Versions_Select versions={project.version} project_uid={project.uid} />
-						</div>				
-					)}}
-				</Query> */}
 			</div>
     	</div>
   	);
