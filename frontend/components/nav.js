@@ -1,17 +1,23 @@
 import React, { useState, useEffect} from "react";  
 import Link from "next/link"
-import LogoutButton from "../components/Logout";
+import { useRouter } from 'next/router';
 
 const Nav = () => {
-
+	const router = useRouter();
 	let Logout = "";
+	const [isAuth, setIsAuth] = useState(false);
 	
 	useEffect(() => {
-		const token = localStorage.getItem('auth:token');
-		
-		
-		
+		if (localStorage.getItem("auth:token")) {
+			setIsAuth(true)
+		}
 	});
+
+	const logout = () => {
+		localStorage.clear();
+		setIsAuth(false)
+		router.push("/");
+	}
 
   	return (
     	<div>
@@ -23,7 +29,9 @@ const Nav = () => {
                       			<Link href="/">
                         			<a>Layout Preview</a>
                       			</Link>
-								{Logout}
+								{isAuth == true? (
+									<div onClick={logout}>Logut</div>
+								): null}
                     		</li>
                   		</ul>
                 	</div>

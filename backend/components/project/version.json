@@ -7,7 +7,9 @@
   "options": {},
   "attributes": {
     "version_number": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "desktop_layout": {
       "type": "component",
@@ -23,9 +25,6 @@
       "type": "component",
       "repeatable": false,
       "component": "project.mobile-layout"
-    },
-    "description": {
-      "type": "richtext"
     }
   }
 }
