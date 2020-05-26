@@ -17,46 +17,64 @@ const Versions_Select = ({ project_uid }) => {
 
 	// States
 	const [isLoading, setLoading] = useState(true);
-	const [options, setOptions] = useState([]);
-	const [value, setValue] = useState();
+	//const [options, setOptions] = useState([]);
+	//const [value, setValue] = useState();
 
 
-	const { uid } = router.query;
+
+
 	const { data: data, loading: loading, error: error } = useQuery(VERSIONS_QUERY, {
 		variables: { uid: project_uid },
 	});
-	const versions = data;
-
-	// Effects
-	useEffect(() => {
-		let unmounted = false;
-		async function getVersions() {
-			let selectDefault = [{"id": "0", "default_value": "Please Select"}];
-			if (!unmounted) {
-				setOptions([...selectDefault, ...versions].map((item) => (
-					{
-						id: item.id,
-						value: item.version_number || item.default_value
-					}
-				)));
-			}
-			setLoading(false);
-		}
-		//getVersions();
-		return () => {
-			unmounted = true;
-		};
-	}, []);
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+	if (error) {
+	  console.error(JSON.stringify(error));
+	  return <div>Error!</div>;
+	}
+	let versions = data.myProject.version;
+	
+	
+	
 	
 
-	return isLoading == true? (
-		<div>
-			<p>Loading</p>
-		</div>
-	): (
+	// // Effects
+	// useEffect(() => {
+	// 	let unmounted = false;
+	// 	async function getVersions() {
+	// 		let selectDefault = [{"id": "0", "default_value": "Please Select"}];
+	// 		if (!unmounted) {
+	// 			setOptions([...selectDefault, ...versions].map((item) => (
+	// 				{
+	// 					id: item.id,
+	// 					value: item.version_number || item.default_value
+	// 				}
+	// 			)));
+	// 		}
+	// 		setLoading(false);
+	// 	}
+	// 	getVersions();
+	// 	return () => {
+	// 		unmounted = true;
+	// 	};
+	// }, []);
+	
+
+	return (
 	  <div>
 			<table>
-			  
+				<tbody>
+					{
+						versions.map((version) => (
+							<tr key={version.id}>
+								<td colSpan="3">
+									{version.version_number}
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
 			</table>
 		
 	  </div>

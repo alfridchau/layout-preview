@@ -39,15 +39,17 @@ const ProjectList = () => {
 	  ): (
     	<div>
       		<div className="uk-section">
-			  	{
-					projects.map((project) => (
-						<li>
-							<Link href="/project/[uid].js" as={`/project/${project.uid}`}>
-								<a>{project.name}</a>
-							</Link>
-						</li>
-					))
-				}
+				  <ul>
+					{
+						projects.map((project) => (
+							<li key={project.id}>
+								<Link href="/project/[uid].js" as={`/project/${project.uid}`}>
+									<a>{project.name}</a>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
 			</div>
     	</div>
   	);
