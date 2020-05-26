@@ -1,17 +1,17 @@
 module.exports = {
   definition: `
     type MyProjects {
-      id: ID!
       uid: String
       name: String
     }
     type MyProject {
       name: String
+      version: [ComponentProjectVersion]
     }
   `,
   query: `
     myProjects(email: String): [MyProjects]
-    myProject(email: String, id: ID!): MyProject
+    myProject(email: String, uid: String!): MyProject
   `,
 
   resolver: {

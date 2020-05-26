@@ -1,8 +1,12 @@
+//Core
 import React, { useState, useEffect} from "react";
+import { useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
+//Queries
+import VERSIONS_QUERY from "../apollo/queries/version/versions";
 
-const Versions_Select = ({ project_uid, versions }) => {
+const Versions_Select = ({ project_uid }) => {
 	const router = useRouter();
 	const setPath = (e) => {
 		let index = e.target.selectedIndex;
@@ -12,9 +16,16 @@ const Versions_Select = ({ project_uid, versions }) => {
 	}
 
 	// States
-	const [loading, setLoading] = React.useState(true);
+	const [isLoading, setLoading] = useState(true);
 	const [options, setOptions] = useState([]);
 	const [value, setValue] = useState();
+
+
+	const { uid } = router.query;
+	const { data: data, loading: loading, error: error } = useQuery(VERSIONS_QUERY, {
+		variables: { uid: project_uid },
+	});
+	const versions = data;
 
 	// Effects
 	useEffect(() => {
@@ -31,20 +42,31 @@ const Versions_Select = ({ project_uid, versions }) => {
 			}
 			setLoading(false);
 		}
-		getVersions();
+		//getVersions();
 		return () => {
 			unmounted = true;
 		};
 	}, []);
 	
 
-  	return (
-		<select disabled={loading} value={value} onChange={setPath}>
-			{options.map(({ id, value }) => (
-				<option id={value} key={id} value={value}>{value}</option>
-			))}
-		</select>
+	return isLoading == true? (
+		<div>
+			<p>Loading</p>
+		</div>
+	): (
+	  <div>
+			<table>
+			  
+			</table>
+		
+	  </div>
 	);
 };
 
 export default Versions_Select;
+
+// <select disabled={loading} value={value} onChange={setPath}>
+			// 	{options.map(({ id, value }) => (
+			// 		<option id={value} key={id} value={value}>{value}</option>
+			// 	))}
+			// </select>

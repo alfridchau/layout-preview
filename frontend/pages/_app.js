@@ -1,7 +1,7 @@
 //Libraries
 import React from "react";  
 import Head from "next/head";  
-//import "../assets/css/style.css";
+import "../assets/css/style.css";
 import { ApolloProvider } from "@apollo/react-hooks";  
 import withData from "../utils/apollo";
 

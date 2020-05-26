@@ -29,12 +29,12 @@ module.exports = {
 	  
 	async getProject(ctx) {
 		const user = ctx.state.user;
-		const data = sanitizeUser(user);
+		const email = sanitizeUser(user).email;
 		const entities = await strapi
 			.query('project')
 			.findOne({
-			  'user.email': data.email,
-			  'id': ctx.params.id
+			  'user.email': email,
+			  'uid': ctx.params._uid
 			})
 		ctx.send(entities);
 	}
