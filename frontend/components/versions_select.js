@@ -15,14 +15,6 @@ const Versions_Select = ({ project_uid }) => {
 		router.push("/project/"+project_uid+"/version/"+version);
 	}
 
-	// States
-	const [isLoading, setLoading] = useState(true);
-	//const [options, setOptions] = useState([]);
-	//const [value, setValue] = useState();
-
-
-
-
 	const { data: data, loading: loading, error: error } = useQuery(VERSIONS_QUERY, {
 		variables: { uid: project_uid },
 	});
@@ -34,31 +26,6 @@ const Versions_Select = ({ project_uid }) => {
 	  return <div>Error!</div>;
 	}
 	let versions = data.myProject.version;
-	
-	
-	
-	
-
-	// // Effects
-	// useEffect(() => {
-	// 	let unmounted = false;
-	// 	async function getVersions() {
-	// 		let selectDefault = [{"id": "0", "default_value": "Please Select"}];
-	// 		if (!unmounted) {
-	// 			setOptions([...selectDefault, ...versions].map((item) => (
-	// 				{
-	// 					id: item.id,
-	// 					value: item.version_number || item.default_value
-	// 				}
-	// 			)));
-	// 		}
-	// 		setLoading(false);
-	// 	}
-	// 	getVersions();
-	// 	return () => {
-	// 		unmounted = true;
-	// 	};
-	// }, []);
 	
 
 	return (
