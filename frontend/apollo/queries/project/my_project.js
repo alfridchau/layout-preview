@@ -12,6 +12,7 @@ const MY_PROJECT_QUERY = gql`
 						id
 						name
 						url
+						width
 						caption
 					}
 					prototype_url
@@ -21,6 +22,7 @@ const MY_PROJECT_QUERY = gql`
 						id
 						name
 						url
+						width
 						caption
 					}
 					prototype_url
@@ -30,6 +32,7 @@ const MY_PROJECT_QUERY = gql`
 						id
 						name
 						url
+						width
 						caption
 					}
 					prototype_url
