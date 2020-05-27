@@ -9,27 +9,27 @@ const MY_PROJECT_QUERY = gql`
 				version_number
 				desktop_layout {
 					layout {
+						id
 						name
-						hash
-						ext
+						url
 						caption
 					}
 					prototype_url
 				}
 				tablet_layout {
 					layout {
+						id
 						name
-						hash
-						ext
+						url
 						caption
 					}
 					prototype_url
 				}
 				mobile_layout {
 					layout {
+						id
 						name
-						hash
-						ext
+						url
 						caption
 					}
 					prototype_url

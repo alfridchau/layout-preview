@@ -48,7 +48,7 @@ const ProjectList = () => {
 						projects.map((project) => (
 							<li key={project.uid}>
 								<Link href="/projects/[uid].js" as={`/projects/${project.uid}`}>
-									<a key={project.id}>{project.name}</a>
+									<a>{project.name}</a>
 								</Link>
 							</li>
 						))

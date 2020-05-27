@@ -26,7 +26,7 @@ const Versions_Select = ({ version, project_uid }) => {
 							}
 							td {
 								width: 33%;
-								text-align: center;
+								text-align: left;
 								vertical-align: top;
 							}
 						}
@@ -46,7 +46,7 @@ const Versions_Select = ({ version, project_uid }) => {
 										<h3>Desktop</h3>
 										{
 											item.desktop_layout != null &&
-												<LayoutURL layout={item.desktop_layout} />
+												<LayoutURL layouts={item.desktop_layout.layout} />
 										}
 										{
 											item.desktop_layout != null && item.desktop_layout.prototype_url != null &&

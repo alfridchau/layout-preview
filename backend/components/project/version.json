@@ -9,7 +9,7 @@
     "version_number": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "desktop_layout": {
       "type": "component",
