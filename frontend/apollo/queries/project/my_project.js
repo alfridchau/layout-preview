@@ -13,6 +13,7 @@ const MY_PROJECT_QUERY = gql`
 						hash
 						ext
 					}
+					prototype_url
 				}
 				tablet_layout {
 					layout {
@@ -20,6 +21,7 @@ const MY_PROJECT_QUERY = gql`
 						hash
 						ext
 					}
+					prototype_url
 				}
 				mobile_layout {
 					layout {
@@ -27,6 +29,7 @@ const MY_PROJECT_QUERY = gql`
 						hash
 						ext
 					}
+					prototype_url
 				}
 			}
         }

@@ -1,7 +1,7 @@
 //Libraries
 import React, { useState, useEffect} from "react";
 import { useMutation } from '@apollo/react-hooks';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 //Queries
 import LOGIN_QUERY from "../apollo/queries/user/login";
@@ -9,11 +9,12 @@ import LOGIN_QUERY from "../apollo/queries/user/login";
 const LoginForm = () => {
 
 	const [isLoading, setLoading] = useState(true);
+	const router = useRouter();
 
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
 			
-			Router.push("/projects");
+			router.push("/projects");
 		} else {
 			setLoading(false)
 		}
@@ -27,7 +28,7 @@ const LoginForm = () => {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
 			//client.writeData({ data: { isLoggedIn: true } });
-			Router.push("/projects");
+			router.push("/projects");
 		},
 		onError(e) {
 			console.log(e)

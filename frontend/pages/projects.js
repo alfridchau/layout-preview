@@ -42,6 +42,7 @@ const ProjectList = () => {
 	  ): (
     	<div>
       		<div className="uk-section">
+				  <h1>Projects</h1>
 				  <ul>
 					{
 						projects.map((project) => (
