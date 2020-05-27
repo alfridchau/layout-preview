@@ -16,17 +16,17 @@ const Versions_Select = ({ version, project_uid }) => {
 				<tbody>
 					{
 						version.map((item) => (
-							<React.Fragment>
-							<tr key={item.id}>
-								<td colSpan="3">
-									{item.version_number}
-								</td>
-							</tr>
-							<tr>
-								<td>Desktop</td>
-								<td>Tablet</td>
-								<td>Mobile</td>
-							</tr>
+							<React.Fragment key={item.id}>
+								<tr>
+									<td colSpan="3">
+										{item.version_number}
+									</td>
+								</tr>
+								<tr>
+									<td>Desktop</td>
+									<td>Tablet</td>
+									<td>Mobile</td>
+								</tr>
 							</React.Fragment>
 						))
 					}

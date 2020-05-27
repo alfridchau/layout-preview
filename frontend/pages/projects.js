@@ -31,7 +31,7 @@ const ProjectList = () => {
 	}
 	let projects = data.myProjects;
 	if (projects.length == 1) {
-		router.push("/project/[uid].js" ,`/project/${projects[0].uid}`)
+		router.push("/projects/[uid].js" ,`/project/${projects[0].uid}`)
 	}
  
 
@@ -45,9 +45,9 @@ const ProjectList = () => {
 				  <ul>
 					{
 						projects.map((project) => (
-							<li key={project.id}>
-								<Link href="/project/[uid].js" as={`/project/${project.uid}`}>
-									<a>{project.name}</a>
+							<li key={project.uid}>
+								<Link href="/projects/[uid].js" as={`/projects/${project.uid}`}>
+									<a key={project.id}>{project.name}</a>
 								</Link>
 							</li>
 						))

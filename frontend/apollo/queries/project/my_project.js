@@ -5,6 +5,7 @@ const MY_PROJECT_QUERY = gql`
         myProject(uid: $uid) {
             name
             version {
+				id
 				version_number
 				desktop_layout {
 					layout {

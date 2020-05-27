@@ -13,7 +13,7 @@ const LoginForm = () => {
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
 			
-			Router.push("/project-list");
+			Router.push("/projects");
 		} else {
 			setLoading(false)
 		}
@@ -27,7 +27,7 @@ const LoginForm = () => {
 		onCompleted({ login }) {
 			localStorage.setItem("auth:token", login.jwt);
 			//client.writeData({ data: { isLoggedIn: true } });
-			Router.push("/project-list");
+			Router.push("/projects");
 		},
 		onError(e) {
 			console.log(e)
