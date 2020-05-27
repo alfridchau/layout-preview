@@ -25,13 +25,13 @@ const Nav = () => {
        		<div>
               	<nav className="uk-navbar-container">
                 	<div className="uk-navbar-left">
-					<style jsx>{`
-						.uk-navbar-nav {
-							width: 100%;
-							justify-content: space-between;
-						}
-					`}</style>
                   		<ul className="uk-navbar-nav">
+						  	<style jsx>{`
+								.uk-navbar-nav {
+									width: 100%;
+									justify-content: space-between;
+								}
+							`}</style>
                     		<li>
                       			<Link href="/">
                         			<a>Layout Preview</a>
@@ -39,8 +39,8 @@ const Nav = () => {
                     		</li>
 							{isAuth == true? (
 								<li>
-									<a onClick={logout}>Logut</a>
-								</li>
+									<a href="#" onClick={logout}>Logut</a>
+								</li> 
 							): null}
                   		</ul>
                 	</div>

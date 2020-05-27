@@ -34,10 +34,6 @@ const Project = ({uid}) => {
 	  return <div>Error!</div>;
 	}
 	let project = data.myProject;
-	if (project == null) {
-		return <h1>There is no such project</h1>;
-	}
- 
 
   	return isLoading == true? (
 		  <div>
@@ -47,7 +43,7 @@ const Project = ({uid}) => {
     	<div>
       		<div className="uk-section">
 				<Project_Title name={project.name} />
-				<Versions_Select project_uid={uid} />
+				<Versions_Select version={project.version} project_uid={uid} />
 			</div>
     	</div>
   	);

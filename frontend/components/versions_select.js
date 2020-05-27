@@ -1,12 +1,12 @@
 //Core
-import React, { useState, useEffect} from "react";
-import { useQuery } from '@apollo/react-hooks';
+import React from "react";
 import { useRouter } from 'next/router';
 
-//Queries
-import VERSIONS_QUERY from "../apollo/queries/version/versions";
+//Component
+import PrototypeURL from "../components/prototype_url";
+import LayoutURL from "../components/layout_url";
 
-const Versions_Select = ({ project_uid }) => {
+const Versions_Select = ({ version, project_uid }) => {
 	const router = useRouter();
 	const setPath = (e) => {
 		let index = e.target.selectedIndex;
@@ -14,51 +14,62 @@ const Versions_Select = ({ project_uid }) => {
 		let version =  el.getAttribute('id');
 		router.push("/project/"+project_uid+"/version/"+version);
 	}
-
-	const { data: data, loading: loading, error: error } = useQuery(VERSIONS_QUERY, {
-		variables: { uid: project_uid },
-	});
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-	if (error) {
-	  console.error(JSON.stringify(error));
-	  return <div>Error!</div>;
-	}
-	let versions = data.myProject.version;
-	
-
 	return (
 	  <div>
 			<table>
+				<style jsx>{`
+					table {
+						width: 100%;
+						tr {
+							th {
+								text-align: left;
+							}
+							td {
+								width: 33%;
+								text-align: left;
+								vertical-align: top;
+							}
+						}
+					}
+				`}</style>
 				<tbody>
 					{
-						versions.map((version) => (
-							<React.Fragment>
-								<tr key={version.id}>
-									<td colSpan="3">
-										<h2>Version: {version.version_number}</h2>
-									</td>
+						version.map((item) => (
+							<React.Fragment key={item.id}>
+								<tr>
+									<th colSpan="3">
+										<h2>Version {item.version_number}:</h2>
+									</th>
 								</tr>
 								<tr>
-									<td>Desktop</td>
-									<td>Tablet</td>
-									<td>Mobile</td>
+									<td>
+										<h3>Desktop</h3>
+										{
+											item.desktop_layout != null &&
+												<LayoutURL layouts={item.desktop_layout.layout} />
+										}
+										{
+											item.desktop_layout != null && item.desktop_layout.prototype_url != null &&
+												<React.Fragment>
+													<br/>
+													<PrototypeURL url={item.desktop_layout.prototype_url} />
+												</React.Fragment>
+										}
+									</td>
+									<td>
+										<h3>Tablet</h3>
+									</td>
+									<td>
+										<h3>Mobile</h3>
+									</td>
 								</tr>
 							</React.Fragment>
 						))
 					}
 				</tbody>
 			</table>
-		
 	  </div>
 	);
 };
 
 export default Versions_Select;
-
-// <select disabled={loading} value={value} onChange={setPath}>
-			// 	{options.map(({ id, value }) => (
-			// 		<option id={value} key={id} value={value}>{value}</option>
-			// 	))}
-			// </select>

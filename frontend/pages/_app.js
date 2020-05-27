@@ -31,6 +31,7 @@ const App = ({ Component, pageProps, apollo }) => {
         		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
       		</Head>
 			<UserContextProvider>
+				
 				<Nav />
 				<Component {...pageProps} />
 			</UserContextProvider>
