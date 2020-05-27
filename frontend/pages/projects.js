@@ -31,7 +31,7 @@ const ProjectList = () => {
 	}
 	let projects = data.myProjects;
 	if (projects.length == 1) {
-		router.push("/projects/[uid].js" ,`/project/${projects[0].uid}`)
+		router.push("/projects/[uid].js" ,`/projects/${projects[0].uid}`)
 	}
  
 
