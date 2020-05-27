@@ -12,6 +12,7 @@ const MY_PROJECT_QUERY = gql`
 						name
 						hash
 						ext
+						caption
 					}
 					prototype_url
 				}
@@ -20,6 +21,7 @@ const MY_PROJECT_QUERY = gql`
 						name
 						hash
 						ext
+						caption
 					}
 					prototype_url
 				}
@@ -28,6 +30,7 @@ const MY_PROJECT_QUERY = gql`
 						name
 						hash
 						ext
+						caption
 					}
 					prototype_url
 				}

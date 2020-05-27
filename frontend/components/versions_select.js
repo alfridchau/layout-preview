@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 //Component
 import PrototypeURL from "../components/prototype_url";
+import LayoutURL from "../components/layout_url";
 
 const Versions_Select = ({ version, project_uid }) => {
 	const router = useRouter();
@@ -37,12 +38,16 @@ const Versions_Select = ({ version, project_uid }) => {
 							<React.Fragment key={item.id}>
 								<tr>
 									<th colSpan="3">
-										Version {item.version_number}:
+										<h2>Version {item.version_number}:</h2>
 									</th>
 								</tr>
 								<tr>
 									<td>
-										Desktop
+										<h3>Desktop</h3>
+										{
+											item.desktop_layout != null &&
+												<LayoutURL layout={item.desktop_layout} />
+										}
 										{
 											item.desktop_layout != null && item.desktop_layout.prototype_url != null &&
 												<React.Fragment>
@@ -51,8 +56,12 @@ const Versions_Select = ({ version, project_uid }) => {
 												</React.Fragment>
 										}
 									</td>
-									<td>Tablet</td>
-									<td>Mobile</td>
+									<td>
+										<h3>Tablet</h3>
+									</td>
+									<td>
+										<h3>Mobile</h3>
+									</td>
 								</tr>
 							</React.Fragment>
 						))

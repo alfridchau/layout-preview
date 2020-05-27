@@ -10,8 +10,8 @@ module.exports = {
     }
   `,
   query: `
-    myProjects(email: String): [MyProjects]
-    myProject(email: String, uid: String!): MyProject
+    myProjects: [MyProjects]
+    myProject(uid: String!): MyProject
   `,
 
   resolver: {
