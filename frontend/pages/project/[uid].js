@@ -34,7 +34,6 @@ const Project = ({uid}) => {
 	  return <div>Error!</div>;
 	}
 	let project = data.myProject;
- 
 
   	return isLoading == true? (
 		  <div>
@@ -44,17 +43,7 @@ const Project = ({uid}) => {
     	<div>
       		<div className="uk-section">
 				<Project_Title name={project.name} />
-				<Versions_Select project_uid={uid} />
-				{/* <Query query={MY_PROJECTS_QUERY} email={email}>
-					{({data: { project }}) => {
-						return (
-							<div className="uk-container uk-container-large">
-							<Project_Title name={project.name} />
-							<label>Layout Versions:</label>
-							<Versions_Select versions={project.version} project_uid={project.uid} />
-						</div>				
-					)}}
-				</Query> */}
+				<Versions_Select version={project.version} project_uid={uid} />
 			</div>
     	</div>
   	);
