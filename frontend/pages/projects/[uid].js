@@ -8,7 +8,7 @@ import MY_PROJECT_QUERY from "../../apollo/queries/project/my_project";
 
 //Components
 import Project_Title from "../../components/project_title";
-import Versions_Select from "../../components/versions_select";
+import PagesList from "../../components/PagesList";
 
 const Project = ({uid}) => {
 	const [isLoading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const Project = ({uid}) => {
 		} else {
 			setLoading(false);
 		}
-	}, [isLoading]);
+	}, []);
 
 	const { data: data, loading: loading, error: error } = useQuery(MY_PROJECT_QUERY, {
 		variables: { uid: uid },
@@ -34,7 +34,7 @@ const Project = ({uid}) => {
 	  return <div>Error!</div>;
 	}
 	let project = data.myProject;
-	console.log(project)
+	//console.log(project)
 
   	return isLoading == true? (
 		  <div>
@@ -44,7 +44,7 @@ const Project = ({uid}) => {
     	<div>
       		<div className="uk-section">
 				<Project_Title name={project.name} />
-				<Versions_Select version={project.version} project_uid={uid} />
+				<PagesList pages={project.page} />
 			</div>
     	</div>
   	);
