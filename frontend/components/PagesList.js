@@ -18,7 +18,7 @@ const PagesList = ({ pages }) => {
                                 vertical-align: top;
 							}
 							td {
-								width: 33%;
+								width: 25%;
 								text-align: left;
 								vertical-align: top;
 							}
