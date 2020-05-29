@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_responsive_tablets",
+  "info": {
+    "name": "tablet",
+    "icon": "air-freshener"
+  },
+  "options": {},
+  "attributes": {
+    "version": {
+      "type": "component",
+      "repeatable": true,
+      "component": "control.version"
+    }
+  }
+}

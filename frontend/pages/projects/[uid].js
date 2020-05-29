@@ -34,6 +34,7 @@ const Project = ({uid}) => {
 	  return <div>Error!</div>;
 	}
 	let project = data.myProject;
+	console.log(project)
 
   	return isLoading == true? (
 		  <div>

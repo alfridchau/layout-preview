@@ -17,14 +17,14 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "version": {
-      "type": "component",
-      "repeatable": true,
-      "component": "project.version"
-    },
     "uid": {
       "type": "uid",
       "targetField": "name"
+    },
+    "page": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page.layout"
     }
   }
 }

@@ -7,11 +7,10 @@ const LayoutURL = ({ layouts }) => {
                 {
                     layouts.map((layout) => (
                         <li key={layout.id}>
-                            <a href={layout.url} target="_blank">{layout.caption}</a>
+                            <a href={layout.url} target="_blank">{layout.caption}</a> <span className="width">(Width: {layout.width}px)</span>
                             <br/>
-                            <span className="filename">Filename: {layout.name}</span>
                             <style jsx>{`
-                                .filename {
+                                span.width {
                                     font-size: 12px;
                                 }
                             `}</style>

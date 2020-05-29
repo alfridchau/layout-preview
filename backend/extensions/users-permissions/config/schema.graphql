@@ -6,7 +6,7 @@ module.exports = {
     }
     type MyProject {
       name: String
-      version: [ComponentProjectVersion]
+      
     }
   `,
   query: `

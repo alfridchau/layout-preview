@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_layouts",
+  "info": {
+    "name": "layout",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desktop": {
+      "type": "component",
+      "repeatable": false,
+      "component": "responsive.desktop"
+    },
+    "tablet": {
+      "type": "component",
+      "repeatable": false,
+      "component": "responsive.tablet"
+    },
+    "mobile": {
+      "type": "component",
+      "repeatable": false,
+      "component": "responsive.mobile"
+    }
+  }
+}

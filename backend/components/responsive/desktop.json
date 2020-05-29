@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_responsive_desktops",
+  "info": {
+    "name": "desktop",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "version": {
+      "type": "component",
+      "repeatable": true,
+      "component": "control.version"
+    }
+  }
+}

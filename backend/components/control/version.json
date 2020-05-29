@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_control_versions",
+  "info": {
+    "name": "version",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "version_number": {
+      "type": "decimal",
+      "required": true
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}

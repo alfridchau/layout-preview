@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_responsive_mobiles",
+  "info": {
+    "name": "mobile",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "version": {
+      "type": "component",
+      "repeatable": true,
+      "component": "control.version"
+    }
+  }
+}
