@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/login",
+      "handler": "login.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/login",
+      "handler": "login.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/login",
+      "handler": "login.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

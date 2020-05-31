@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_singletype_metadata",
+  "info": {
+    "name": "metadata",
+    "icon": "align-center"
+  },
+  "options": {},
+  "attributes": {
+    "page_title": {
+      "type": "string"
+    }
+  }
+}

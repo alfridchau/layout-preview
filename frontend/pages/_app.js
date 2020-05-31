@@ -6,7 +6,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import withData from "../utils/apollo";
 
 //Context
-import UserContextProvider from '../contexts/userContext';
+//import UserContextProvider from '../contexts/userContext';
 
 //Components
 import Nav from "../components/nav";  
@@ -22,19 +22,14 @@ const App = ({ Component, pageProps, apollo }) => {
           			rel="stylesheet"
           			href="https://fonts.googleapis.com/css?family=Staatliches"
 				/>
-        		<link
-          			rel="stylesheet"
-          			href="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css"
-        		/>
+        		
         		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js" />
         		<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js" />
         		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
       		</Head>
-			<UserContextProvider>
-				
-				<Nav />
-				<Component {...pageProps} />
-			</UserContextProvider>
+			<Nav />
+			<Component {...pageProps} />
+			
       		
     	</ApolloProvider>
   	)

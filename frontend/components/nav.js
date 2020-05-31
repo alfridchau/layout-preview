@@ -27,9 +27,13 @@ const Nav = () => {
                 	<div className="uk-navbar-left">
                   		<ul className="uk-navbar-nav">
 						  	<style jsx>{`
-								.uk-navbar-nav {
-									width: 100%;
+								ul.uk-navbar-nav {
+									display: flex;
 									justify-content: space-between;
+									padding-left: 0;
+									li {
+										list-style: none;
+									}
 								}
 							`}</style>
                     		<li>
