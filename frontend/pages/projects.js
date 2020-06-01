@@ -14,7 +14,8 @@ const ProjectList = () => {
 		if (!localStorage.getItem("auth:token")) {
 			router.push("/");
 		}
-	}, []);
+	});
+	
 
 
 	// disable query cache if user change
@@ -23,11 +24,18 @@ const ProjectList = () => {
 	  console.error(JSON.stringify(error));
 	  return <div>Error!</div>;
 	}
-	let projects = data.myProjects;
-	if (projects.length == 1) {
-		router.push("/projects/[uid].js" ,`/projects/${projects[0].uid}`)
-	}
+
+	
 	 
+
+	useEffect(() => {
+		if (data) {
+			let projects = data.myProjects;
+			if (projects.length == 1) {
+				router.push("/projects/[uid].js" ,`/projects/${projects[0].uid}`)
+			}
+		}
+	}, [data]);
 
   	return loading? (
 		  <div>
@@ -38,15 +46,7 @@ const ProjectList = () => {
 			<div className="uk-section">
 				<h1>Projects</h1>
 				<ul>
-				{
-					projects.map((project) => (
-						<li key={project.uid}>
-							<Link href="/projects/[uid].js" as={`/projects/${project.uid}`}>
-								<a>{project.name}</a>
-							</Link>
-						</li>
-					))
-				}
+				
 			</ul>
 		</div>
 	</div>

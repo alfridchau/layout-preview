@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const PAGE_INDEX_QUERY = gql`  
-    query Login {
+    query Index {
         login {
             logo {
                 url

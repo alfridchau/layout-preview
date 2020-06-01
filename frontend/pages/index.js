@@ -19,7 +19,7 @@ const Index = () => {
 	}
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {	
-			router.push("/projects");
+			//router.push("/projects");
 		}
 	}, []);
 	useEffect(() => {
@@ -28,12 +28,6 @@ const Index = () => {
 		}
 	}, [data])
 
-	useEffect(() => {
-		if (data) {
-			setBackground(data.login.background.url);
-		}
-	}, [data])
-	
   	return loading? (
 		<div>Loading...</div>
 	): (

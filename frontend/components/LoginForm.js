@@ -8,18 +8,15 @@ import LOGIN_QUERY from "../apollo/queries/user/login";
 
 const LoginForm = () => {
 
-	const [isLoading, setLoading] = useState(true);
+	//const [isLoading, setLoading] = useState(true);
 	const router = useRouter();
 
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {
 			
 			router.push("/projects");
-		} else {
-			setLoading(false)
 		}
-		
-	},[isLoading]);
+	},[]);
 	
 
 	
@@ -47,12 +44,9 @@ const LoginForm = () => {
 			[e.target.name]: value
 		});
 	}
-
-	
-	if (loading) return <p>Loading</p>;
 	if (error) return <p>An error occurred</p>;
 
-	return isLoading == true? (
+	return loading? (
 		<div>
 			<p>Loading</p>
 		</div>
