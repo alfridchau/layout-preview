@@ -6,20 +6,11 @@ import { useRouter } from 'next/router';
 //Queries
 import LOGIN_QUERY from "../apollo/queries/user/login";
 
-const LoginForm = () => {
+const LoginForm = ({canDisplay}) => {
 
-	//const [isLoading, setLoading] = useState(true);
+	const [display, setDisplay] = useState(canDisplay);
 	const router = useRouter();
 
-	useEffect(() => {
-		if (localStorage.getItem("auth:token")) {
-			
-			router.push("/projects");
-		}
-	},[]);
-	
-
-	
 
 	const [loginAccount, { loading, error }] = useMutation(LOGIN_QUERY, {
 		onCompleted({ login }) {
@@ -31,6 +22,17 @@ const LoginForm = () => {
 			console.log(e)
 		}
 	});
+	if (loading) {
+		return <div><p>Loading</p></div>;
+	}
+
+	if (error) {
+	  console.error(JSON.stringify(error));
+	  return <div><p>An error occurred</p></div>;
+	}
+
+
+
 	
 	const [form, setForm] = useState({
 		name: "test@test.com",
@@ -44,13 +46,11 @@ const LoginForm = () => {
 			[e.target.name]: value
 		});
 	}
-	if (error) return <p>An error occurred</p>;
+	
+	
+	
 
-	return loading? (
-		<div>
-			<p>Loading</p>
-		</div>
-	): (
+	return display? (
 		<div>
 			<form id="login" onSubmit={e => {
 				e.preventDefault();
@@ -75,7 +75,7 @@ const LoginForm = () => {
 			</form>
       		
     	</div>
-  	);
+  	): null;
 };
 
 export default LoginForm;

@@ -10,29 +10,39 @@ import LoginForm from "../components/LoginForm";
 import PAGE_INDEX_QUERY from "../apollo/queries/page/index";
 
 const Index = () => {
-	const [background, setBackground] = useState();
-	const { data: data, loading: loading, error: error } = useQuery(PAGE_INDEX_QUERY);
 	const router = useRouter();
-	if (error) {
-	  console.error(JSON.stringify(error));
-	  return <div>Error!</div>;
-	}
+	
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {	
-			//router.push("/projects");
+			
+			router.push("/projects");
 		}
-	}, []);
+	});
+
+	const [background, setBackground] = useState();
+	const { data: data, loading: loading, error: error } = useQuery(PAGE_INDEX_QUERY);
+	
+	
+
+	if (error) {
+	  console.error(JSON.stringify(error));
+	  return <div><p>An error occurred</p></div>;
+	}
+
 	useEffect(() => {
-		if (data) {
+		let unmounted = false;
+		if (data != null) {
 			setBackground(data.login.background.url);
 		}
-	}, [data])
+		return () => {
+			unmounted = true;
+		};
+	}, []);
+	
 
-  	return loading? (
-		<div>Loading...</div>
-	): (
+  	return (
 		  <React.Fragment>
-				<LoginForm />
+				<LoginForm canDisplay={false} />
 				<style jsx global>{`
 					body {
 						background-image: url(${background})
