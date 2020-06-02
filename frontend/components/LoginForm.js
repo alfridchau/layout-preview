@@ -6,9 +6,9 @@ import { useRouter } from 'next/router';
 //Queries
 import LOGIN_QUERY from "../apollo/queries/user/login";
 
-const LoginForm = ({canDisplay}) => {
+const LoginForm = ({showStatus}) => {
 
-	const [display, setDisplay] = useState(canDisplay);
+	const [display, setDisplay] = useState(showStatus);
 	const router = useRouter();
 
 
@@ -30,6 +30,12 @@ const LoginForm = ({canDisplay}) => {
 	  console.error(JSON.stringify(error));
 	  return <div><p>An error occurred</p></div>;
 	}
+
+	useEffect(() => {
+		if (!localStorage.getItem("auth:token")) {	
+			setDisplay(true)
+		}
+	}, [display]);
 
 
 

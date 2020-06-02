@@ -14,12 +14,11 @@ const Index = () => {
 	
 	useEffect(() => {
 		if (localStorage.getItem("auth:token")) {	
-			
 			router.push("/projects");
 		}
 	});
 
-	const [background, setBackground] = useState();
+	const [background, setBackground] = useState("#FFFFFF");
 	const { data: data, loading: loading, error: error } = useQuery(PAGE_INDEX_QUERY);
 	
 	
@@ -30,25 +29,28 @@ const Index = () => {
 	}
 
 	useEffect(() => {
-		let unmounted = false;
+		
 		if (data != null) {
-			setBackground(data.login.background.url);
+			setBackground("url("+data.login.background.url+")");
 		}
-		return () => {
-			unmounted = true;
-		};
-	}, []);
+	}, [data]);
 	
 
-  	return (
-		  <React.Fragment>
-				<LoginForm canDisplay={false} />
-				<style jsx global>{`
-					body {
-						background-image: url(${background})
-					}
-				`}</style>
-		  </React.Fragment>
+  	return loading? (
+		<div>
+			<p>An error occurred</p>
+		</div>
+	): (
+		<React.Fragment>
+			<LoginForm showStatus={false} />
+			<style jsx global>{`
+				body {
+					background: ${background};
+					background-size: cover;
+					background-repeat: no-repeat;
+				}
+			`}</style>
+		</React.Fragment>
 	);
 };
 

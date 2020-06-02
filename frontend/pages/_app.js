@@ -1,6 +1,7 @@
 //Libraries
 import React from "react";  
-import Head from "next/head";  
+import Head from "next/head";
+import "reset-css";
 import "../assets/css/style.css";
 import { ApolloProvider } from "@apollo/react-hooks";  
 import withData from "../utils/apollo";
@@ -29,7 +30,12 @@ const App = ({ Component, pageProps, apollo }) => {
       		</Head>
 			<Nav />
 			<Component {...pageProps} />
-			
+			<style jsx global>{`
+				html, body {
+					width: 100%;
+					height: 100%;
+				}
+			`}</style>
       		
     	</ApolloProvider>
   	)
