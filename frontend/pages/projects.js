@@ -10,14 +10,13 @@ import MY_PROJECTS_QUERY from "../apollo/queries/project/my_projects";
 const ProjectList = () => {
 	const router = useRouter();
 	
+
 	useEffect(() => {
-		if (!localStorage.getItem("auth:token")) {
+		if (!localStorage.getItem("auth:token")) {	
 			router.push("/");
 		}
-	});
+	}, []);
 	
-
-
 	// disable query cache if user change
 	const { data: data, loading: loading, error: error } = useQuery(MY_PROJECTS_QUERY,{ fetchPolicy: "network-only" });
 	if (error) {
@@ -25,12 +24,10 @@ const ProjectList = () => {
 	  return <div>Error!</div>;
 	}
 
-	
-	 
-
+	const [projects, setProjects] = useState([]);
 	useEffect(() => {
-		if (data) {
-			let projects = data.myProjects;
+		if (data != null) {
+			setProjects(data.myProjects);
 			if (projects.length == 1) {
 				router.push("/projects/[uid].js" ,`/projects/${projects[0].uid}`)
 			}
@@ -43,13 +40,25 @@ const ProjectList = () => {
 		  </div>
 	  ): (
 		<div>
-			<div className="uk-section">
-				<h1>Projects</h1>
-				<ul>
-				
+			<h1>Projects</h1>
+			<style jsx>{`
+				h1 {
+					font-size: 60px;
+					line-height: 100%;
+				}
+			`}</style>
+			<ul>
+				{
+					projects.map((project) => (
+						<li key={project.uid}>
+							<Link href="/projects/[uid].js" as={`/projects/${project.uid}`}>
+								<a>{project.name}</a>
+							</Link>
+						</li>
+					))
+				}
 			</ul>
 		</div>
-	</div>
 	  );
 };
 

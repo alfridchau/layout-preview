@@ -10,7 +10,7 @@ import withData from "../utils/apollo";
 //import UserContextProvider from '../contexts/userContext';
 
 //Components
-import Nav from "../components/nav";  
+import Navbar from "../components/Navbar";  
 
 const App = ({ Component, pageProps, apollo }) => {
 
@@ -28,12 +28,13 @@ const App = ({ Component, pageProps, apollo }) => {
         		<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js" />
         		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
       		</Head>
-			<Nav />
+			<Navbar />
 			<Component {...pageProps} />
 			<style jsx global>{`
 				html, body {
 					width: 100%;
 					height: 100%;
+					font-family: Staatliches;
 				}
 			`}</style>
       		
