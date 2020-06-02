@@ -1,8 +1,20 @@
 import React from "react";
 
-const PrototypeURL = ({ url }) => { 
-  	return (
-    		<a href={url} target="_blank">Click here to access this prototype</a>
+const PrototypeURL = ({ type, url }) => { 
+  	return url != null && (
+		<React.Fragment>
+			<a href={url} target="_blank">{type} fullversion prototype</a>
+			<style jsx>{`
+				a {
+					color: #005377;
+					display: block;
+					margin-bottom: 10px;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			`}</style>
+		</React.Fragment>
   	);
 };
 

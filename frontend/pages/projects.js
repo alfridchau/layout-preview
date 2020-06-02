@@ -26,13 +26,13 @@ const ProjectList = () => {
 
 	const [projects, setProjects] = useState([]);
 	useEffect(() => {
-		if (data != null) {
+		if (data) {
 			setProjects(data.myProjects);
 			if (projects.length == 1) {
 				router.push("/projects/[uid].js" ,`/projects/${projects[0].uid}`)
 			}
 		}
-	}, [data]);
+	});
 
   	return loading? (
 		  <div>

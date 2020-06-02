@@ -4,6 +4,15 @@ const MY_PROJECT_QUERY = gql`
     query MyProject($uid: String!) {
         myProject(uid: $uid) {
 			name
+			desktop_prototype {
+				url
+			}
+			tablet_prototype {
+				url
+			}
+			mobile_prototype {
+				url
+			}
 			page {
 				id
 				name

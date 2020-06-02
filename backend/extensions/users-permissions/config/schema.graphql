@@ -7,7 +7,9 @@ module.exports = {
     type MyProject {
       name: String
       page: [ComponentPageLayout]
-      
+      desktop_prototype: ComponentPrototypeFullversion
+      tablet_prototype: ComponentPrototypeFullversion
+      mobile_prototype: ComponentPrototypeFullversion
     }
   `,
   query: `

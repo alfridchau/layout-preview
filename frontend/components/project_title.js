@@ -1,7 +1,7 @@
 import React from "react";
 
 const Project = ({ name }) => { 
-  	return (
+  	return name != null && (
 		<React.Fragment>
 			<h1>{name}</h1>
 			<style jsx>{`

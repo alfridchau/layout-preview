@@ -5,8 +5,7 @@ import React from "react";
 import LayoutVersionList from "../components/LayoutVersionList";
 
 const PagesList = ({ pages }) => {
-
-	return (
+	return pages != undefined && (
 	  <div>
 			<table>
 				<style jsx>{`
@@ -39,14 +38,15 @@ const PagesList = ({ pages }) => {
                         <th>Mobile</th>
                     </tr>
 					{
-						pages.map((page) => (
+							pages.map((page) => (
 								<tr key={page.id}>
 									<td>{page.name}</td>
-                                    <td><LayoutVersionList layouts={page.desktop} /></td>
-                                    <td><LayoutVersionList layouts={page.tablet} /></td>
-                                    <td><LayoutVersionList layouts={page.mobile} /></td>
+									<td><LayoutVersionList layouts={page.desktop} /></td>
+									<td><LayoutVersionList layouts={page.tablet} /></td>
+									<td><LayoutVersionList layouts={page.mobile} /></td>
 								</tr>
-						))
+							))
+						
 					}
 				</tbody>
 			</table>
