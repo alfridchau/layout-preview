@@ -45,7 +45,7 @@ const Index = () => {
 		<React.Fragment>
 			<div className="form">
 				<IndexLogo logo={logo} showStatus={logoDisplay} />
-				<LoginForm showStatus={false} onchange={(e) => { setLogoDisplay(e) }} />
+				<LoginForm showStatus={false} onPropsChange={(e) => { setLogoDisplay(e) }} />
 			</div>
 			<style jsx global>{`
 				.form {

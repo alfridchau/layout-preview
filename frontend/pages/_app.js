@@ -17,16 +17,12 @@ const App = ({ Component, pageProps, apollo }) => {
   	return (
     	<ApolloProvider client={apollo}>
       		<Head>
-        		<title>Strapi blog</title>
+        		<title>Mirum Layout Preview</title>
         		<meta name="viewport" content="initial-scale=1.0, width=device-width" />
         		<link
           			rel="stylesheet"
           			href="https://fonts.googleapis.com/css?family=Staatliches"
 				/>
-        		
-        		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js" />
-        		<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js" />
-        		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js" />
       		</Head>
 			<Navbar />
 			<Component {...pageProps} />
@@ -35,6 +31,9 @@ const App = ({ Component, pageProps, apollo }) => {
 					width: 100%;
 					height: 100%;
 					font-family: Staatliches;
+				}
+				#__next {
+					padding: 20px;
 				}
 			`}</style>
       		

@@ -50,7 +50,7 @@ const LoginForm = (logoDisplay, {showStatus}) => {
 
 	// Send to Parent
 	const setLogoDisplay = (status) => {
-		logoDisplay.onchange(status)
+		logoDisplay.onPropsChange(status)
     }
 	
 	return loading? (
@@ -82,7 +82,7 @@ const LoginForm = (logoDisplay, {showStatus}) => {
 					<input type="password" id="password" name="password" value={form.password} onChange={handleChange} />
 				</div>
 
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Login" />
 			</form>
 			<style jsx>{`
 				form {

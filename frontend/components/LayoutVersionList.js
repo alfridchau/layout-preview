@@ -18,14 +18,14 @@ const LayoutVersionList = ({ layouts }) => {
 	}
 	return (
 		<React.Fragment>
-			<p className="version">Latest Version: <a href={latestVersion.image.url} target="_blank" className="version">{latestVersion.version_number}</a></p>
+			<p className="version"><a href={latestVersion.image.url} target="_blank" className="version">{latestVersion.version_number}</a></p>
 			{ prevVersion.length > 0 &&
 				<React.Fragment>
-					<p className="version">Previous Version:</p>
-					<ul className="prevVersionList">
+					<p className="prevVersion">Previous Version:</p>
+					<ul className="prevVersion">
 						{
 							prevVersion.map((version) => {
-								return <li key={version.id}><a href={version.image.url} target="_blank" className="version">{version.version_number}</a></li>
+								return <li key={version.id}><a href={version.image.url} target="_blank" className="prevVersion">{version.version_number}</a></li>
 							})
 						}
 						
@@ -35,14 +35,26 @@ const LayoutVersionList = ({ layouts }) => {
 			
 			
 			<style jsx>{`
+				a {
+					&:hover {
+						text-decoration: underline;
+					}
+				}
 				.version {
-					font-size: 14px;
-					color: #CCC;
+					font-size: 18px;
+					color: #005377;
 				}
 				p.version {
 					margin-bottom: 0;
 				}
-				ul.prevVersionList {
+				.prevVersion {
+					font-size: 15px;
+					color: #aaaaaa;
+				}
+				p.prevVersion {
+					margin-top: 20px;
+				}
+				ul.prevVersion {
 					margin-top: 10px;
 				}
 			`}</style>

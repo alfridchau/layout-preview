@@ -16,18 +16,24 @@ const PagesList = ({ pages }) => {
 							th {
 								text-align: left;
                                 vertical-align: top;
+								font-size: 20px;
+								border-bottom: solid 1px #005377;
+								padding: 20px 0;
 							}
 							td {
 								width: 25%;
 								text-align: left;
 								vertical-align: top;
+								font-size: 20px;
+								border-bottom: solid 1px #212322;
+								padding: 20px 0;
 							}
 						}
 					}
 				`}</style>
 				<tbody>
                     <tr>
-                        <td></td>
+                        <th></th>
                         <th>Desktop</th>
                         <th>Tablet</th>
                         <th>Mobile</th>
@@ -35,7 +41,7 @@ const PagesList = ({ pages }) => {
 					{
 						pages.map((page) => (
 								<tr key={page.id}>
-									<th>{page.name}</th>
+									<td>{page.name}</td>
                                     <td><LayoutVersionList layouts={page.desktop} /></td>
                                     <td><LayoutVersionList layouts={page.tablet} /></td>
                                     <td><LayoutVersionList layouts={page.mobile} /></td>

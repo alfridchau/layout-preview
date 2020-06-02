@@ -2,7 +2,14 @@ import React from "react";
 
 const IndexLogo = ({logo, showStatus}) => {
 
-  	return logo == undefined? null: showStatus == true? (
+    if (logo == undefined) {
+        return null;
+    }
+    if (showStatus == false) {
+        return null;
+    }
+
+  	return (
         <React.Fragment>
             <div>
                 <img src={logo} />
@@ -14,7 +21,7 @@ const IndexLogo = ({logo, showStatus}) => {
                 }
             `}</style>
         </React.Fragment>
-  	): null;
+  	);
 };
 
 export default IndexLogo;

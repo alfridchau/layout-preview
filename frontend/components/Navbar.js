@@ -39,6 +39,8 @@ const Navbar = () => {
 			<style jsx>{`
 				nav {
 					margin-bottom: 20px;
+					padding-bottom: 20px;
+					border-bottom: solid 1px #212322;
 				}
 				ul {
 					display: flex;
