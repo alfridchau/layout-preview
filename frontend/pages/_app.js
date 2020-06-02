@@ -1,5 +1,5 @@
 //Libraries
-import React from "react";  
+import React, {useState} from "react";  
 import Head from "next/head";
 import "reset-css";
 import "../assets/css/style.css";
@@ -13,7 +13,6 @@ import withData from "../utils/apollo";
 import Navbar from "../components/Navbar";  
 
 const App = ({ Component, pageProps, apollo }) => {
-
   	return (
     	<ApolloProvider client={apollo}>
       		<Head>

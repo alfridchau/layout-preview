@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 
 const Navbar = () => {
 	const router = useRouter();
-	let Logout = "";
 	const [isAuth, setIsAuth] = useState(false);
 	
 	useEffect(() => {
@@ -40,7 +39,7 @@ const Navbar = () => {
 				nav {
 					margin-bottom: 20px;
 					padding-bottom: 20px;
-					border-bottom: solid 1px #212322;
+					border-bottom: solid 1px #EEEEEE;
 				}
 				ul {
 					display: flex;

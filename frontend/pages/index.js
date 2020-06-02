@@ -36,7 +36,6 @@ const Index = () => {
 
 	const [logoDisplay, setLogoDisplay] = useState(true);
 	
-
   	return loading? (
 		<div>
 			<p>Loading</p>

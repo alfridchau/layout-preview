@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_prototype_fullversions",
+  "info": {
+    "name": "fullversion",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

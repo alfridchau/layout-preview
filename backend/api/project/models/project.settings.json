@@ -25,6 +25,21 @@
       "type": "component",
       "repeatable": true,
       "component": "page.layout"
+    },
+    "desktop_prototype": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prototype.fullversion"
+    },
+    "tablet_prototype": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prototype.fullversion"
+    },
+    "mobile_prototype": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prototype.fullversion"
     }
   }
 }
